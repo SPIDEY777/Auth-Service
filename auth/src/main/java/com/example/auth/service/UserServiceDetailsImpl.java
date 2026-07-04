@@ -1,6 +1,5 @@
 package com.example.auth.service;
 
-import com.example.auth.UserInfoDTO;
 import com.example.auth.entities.UserInfo;
 import com.example.auth.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -38,11 +37,11 @@ public class UserServiceDetailsImpl implements UserDetailsService {
         return new CustomUserDetails(user);
     }
 
-    public UserInfo checkUserAlreadyExists(UserInfoDTO user){
+    public UserInfo checkUserAlreadyExists(model.UserInfoDTO user){
          return  userRepository.findByUsername(user.getUsername());
     }
 
-    public Boolean signUpUser(UserInfoDTO user){
+    public Boolean signUpUser(model.UserInfoDTO user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if(Objects.isNull(checkUserAlreadyExists(user))){
             return false;
