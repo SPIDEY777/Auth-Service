@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming (PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class UserInfoDto extends UserInfo
+public class UserInfoDTO extends UserInfo
 {
 
     private String firstName; // first_name

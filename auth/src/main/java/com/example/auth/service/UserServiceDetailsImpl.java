@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.auth.model.UserInfoDTO;
+
 
 import org.springframework.stereotype.Component;
 
@@ -37,13 +39,13 @@ public class UserServiceDetailsImpl implements UserDetailsService {
         return new CustomUserDetails(user);
     }
 
-    public UserInfo checkUserAlreadyExists(model.UserInfoDTO user){
+    public UserInfo checkUserAlreadyExists(UserInfoDTO user){
          return  userRepository.findByUsername(user.getUsername());
     }
 
-    public Boolean signUpUser(model.UserInfoDTO user){
+    public Boolean signUpUser(UserInfoDTO user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        if(Objects.isNull(checkUserAlreadyExists(user))){
+        if(Objects.nonNull(checkUserAlreadyExists(user))){
             return false;
         }
         String userId  = UUID.randomUUID().toString();
