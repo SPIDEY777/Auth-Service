@@ -1,7 +1,7 @@
 package com.example.auth.entities;
 
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+
 import jakarta.persistence.*;
 import lombok.*;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -15,6 +15,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Builder
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+@Table(name = "tokens")
 
 
 public class RefreshToken {
